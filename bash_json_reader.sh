@@ -11,12 +11,15 @@ server_name="address_components"
 
 echo "The server name is \"$server_name\""
 declare -A map1
- 
-while read server file ; do    
-	map1[$server]=$file
-	echo "The path to file ${#map1[@]} is $server"
+numfiles=0
+
+while read server ; do
+	numfiles=$((numfiles + 1))
+	echo "The path to file $numfiles is $server"
 #	echo "the file name is $file"
 
 done < <(echo "$data" | jq -r '.results[].'$server_name'[] |"\(.long_name)"') # \(.short_name)"')
 
-echo "Number of files tracked: ${#map1[@]}"
+echo "Number of files tracked: $numfiles"
+
+
