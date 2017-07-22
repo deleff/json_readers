@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Make sure jq is installed
+
 data=`curl "http://maps.googleapis.com/maps/api/geocode/json?address=Belsize%20+rd,+London&sensor=false&region=uk"`
 
 server_name="address_components"
