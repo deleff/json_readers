@@ -10,13 +10,11 @@ server_name="address_components"
 
 
 echo "The server name is \"$server_name\""
-declare -A map1
 numfiles=0
 
 while read server ; do
 	numfiles=$((numfiles + 1))
 	echo "The path to file $numfiles is $server"
-#	echo "the file name is $file"
 
 done < <(echo "$data" | jq -r '.results[].'$server_name'[] |"\(.long_name)"') # \(.short_name)"')
 
